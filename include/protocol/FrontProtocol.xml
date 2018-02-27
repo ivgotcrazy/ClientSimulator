@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="GB2312"?>
+<root>
+    <!--##########################################################################-->
+    <!--##############################业务前置与终端##############################-->
+    <!--##########################################################################-->
+    <!--用户登陆-->
+    <cmd id="30000">
+        <!--1为视频会议终端-->
+        <!--2为IM客户端-->          
+        <ClientType var="1" /> 
+        <!--1为桌面终端-->
+        <!--2为硬件终端-->
+        <!--3为移动终端-->
+        <TerminalType var="1" /> 
+        <!--0 unregister user-->
+        <!--1 register user-->
+        <UserType var="1" />
+        <!--客户端主应用服务APPID,11为会议应用-->
+        <AppType var="11" />
+        <!--1为用户帐号-->
+        <!--2为用户邮箱-->
+        <!--3为用户电话-->
+        <UserLoginType var="1" />
+        <UserName var="guest1" /> 
+        <!--客户端产品ID-->
+        <ProductName var="FMS101" />
+        <!--用户密码-->
+        <UserPassword var="1111" />
+        <!--登录服务器IP 端口号-->
+        <LoginServerAddr var="www.fsmeeting.com:1089" />
+    </cmd>
+    <!--用户登陆返回-->
+    <cmd id="30001">
+        <!--结果,0 为OK-->
+        <Result var="0" />
+        <!--本级节点ID-->
+        <LocalNodeID var="Node1" />
+        <!--本级用户ID-->
+        <LocalUserID var="12222" />
+    </cmd>
+    <!--终端获取会议室列表-->
+    <cmd id="30002">
+        <!--1为获取所有级联会议室列表-->
+        <!--2为获取本地会议室列表-->
+        <IsGetAllList var="1" />
+        <!--是否获取会议室描述-->
+        <IsGetRoomDesc val="0" />
+    </cmd>
+    <!--前置返回会议室列表-->
+    <cmd id="30003">
+        <!--结果,0 为OK-->
+        <Result var="0" />
+        <!--是否是顶级节点返回的会议室列表，如果为0,表示后面还会有会议室列表返回-->
+        <IsTopNode val="1"/>
+        <!--该会议室列表所在节点ID-->
+        <RoomNodeID var="Node1" />  
+        <RoomInfo>
+            <!--会议名称-->
+            <Name var="test1" />
+            <!--会议最大用户数-->
+            <MaxUserCount var="100" />
+            <!--会议当前用户数-->
+            <CurUserCount var="20" />
+            <RoomID var="10" />
+            <!--房间应用类型ID-->
+            <RoomAppID var="11" />
+        </RoomInfo>     
+    </cmd>
+    <!--用户进入会议室-->
+    <cmd id="30004">
+        <!--所在会议室的节点ID-->
+        <RoomNodeID var="Node1" />
+        <!--进入的会议室-->
+        <RoomID var="123" />
+        <!--房间应用类型ID-->
+        <RoomAppID var="11" />
+		<!--电话虚拟用户指定登录的网关设备ID-->
+        <PhoneGwDevID var="test01" />
+        <!--电话虚拟用户指定登录的网关设备的校验码-->
+        <PhoneGwDevVerifyCode var="1234" />
+    </cmd>
+    <!--返回用户进入会议室-->
+    <cmd id="30005">
+        <!--结果,0 为OK, 8474,邀请码过期；8473，邀请码错误-->
+        <Result var="0" />
+        <!--会议室所在的节点ID-->
+        <RoomNodeID var="Node1" />
+        <!--进入的会议室-->
+        <RoomID var="123" />
+        <!--用户会议室权限1为主持人、2为出席、3为旁听-->
+        <UserRight var="1" />
+        <!--会议验证方式：1、用户密码验证；2、会议室密码验证；3、匿名登录-->
+        <RoomVerifyMode var="1" />
+        <!--进入会议室的令牌-->
+        <Token val="{2A53417F-6CDC-4b34-B449-FBC8FA1108B8}"/>
+        <!--用户在该会议节点上的用户ID-->
+        <RoomUserID val="1000" />   
+        <!--会议所在服务节点ID -->
+        <RoomSrvNodeID val="NodeID1$SID:10005$AID:11"/>
+        <Server>
+            <!--会议服务地址-->
+            <SrvAddr var="TCP:127.0.0.1:8000" /> 
+            <!--会议服务器名称-->
+            <SrvName val="山东双线"/>
+        <Server>
+        <Server>
+            <SrvAddr var="TCP:127.0.0.1:8000" /> 
+            <SrvName val="广州电信"/>
+        <Server>
+    </cmd>
+    <!--用户退出会议室-->
+    <cmd id="30008">
+        <RoomID var="10001" />
+        <!--会议所在节点ID-->
+        <RoomNodeID var="Node1" />
+    </cmd>
+    <!--用户退出会议室返回-->
+    <cmd id="30009">
+        <Result var="0" />
+    </cmd>
+    <!--用户注销-->
+    <cmd id="30010">
+
+    </cmd>
+    <!--用户注销返回-->
+    <cmd id="30011">
+        <Result var="0" />
+    </cmd>
+    
+    <!--用户通过登录会议室号获取会议室ID-->
+    <cmd id="30012">
+        <LoginRoomId var="12345678" />
+    </cmd>
+    
+    <!--返回用户会议室ID-->
+    <cmd id="30013">
+        <!--Result = 0 时 标识获取到Room ID 其他为错误吗 -->
+        <Result var="0" />
+        <!--RoomId  获取到Room ID-->
+        <RoomId var="123" />
+    </cmd>
+        
+    <!--##########################################################################-->
+    <!--##############################业务前置与设备##############################-->
+    <!--##########################################################################-->
+    <!--设备注册,用于与前置进行令牌控制-->
+    <cmd id="30100">
+        <DevID val="Default"/>
+    </cmd>
+    <!--设备注册返回-->
+    <cmd id="30101">
+        <Result var="0" />
+    </cmd>
+    <!--设备退出-->
+    <cmd id="30102">
+    </cmd>
+    <!--设备退出返回-->
+    <cmd id="30103">
+        <Result var="0" />
+    </cmd>
+    <!--设备更新令牌-->
+    <cmd id="30104">
+        <!--激活的令牌-->
+        <ActiveToken>
+            <Token val="1001"/>
+            <Token val="1002"/>
+        </ActiveToken>
+        <!--释放的令牌-->
+        <ReleaseToken>
+            <Token val="1001"/>
+            <Token val="1002"/>
+        </ReleaseToken>
+    </cmd>
+    
+    <!--##########################################################################-->
+    <!--########################下级业务前置与上级业务前置########################-->
+    <!--##########################################################################-->
+    <!--业务前置注册-->
+    <cmd id="30200">
+        <NodeID  var="Front1" />
+        <CheckCode var="1234" />
+    </cmd>
+    <!--业务前置注册回应-->
+    <cmd id="30201">
+        <Result var="0" />
+    </cmd>
+    <!--请求会议室列表-->
+    <cmd id="30202">
+        <!--节点路由,上级节点ID在前面-->
+        <NodeIDRoute var="Node1#Node2#Node3" />
+        <!--用户从那个节点会话ID发起的请求-->
+        <UserSessionID var="777" />
+        <UserLoginType var="1" />       
+        <UserName var="test" />
+        <UserPassword var="1234" />
+        <!--所需房间的AppID-->
+        <RoomAppID var="11" />
+        <!--是否获取会议室描述-->
+        <IsGetRoomDesc val="0" />
+    </cmd>
+    <!--请求会议室列表回应-->
+    <cmd id="30203">
+        <Result var="0" />
+        <!--节点路由,上级节点ID在前面-->
+        <NodeIDRoute var="Node1#Node2#Node3" />
+        <!--用户从那个节点会话ID发起的请求-->
+        <UserSessionID var="777" />
+        <!--是否获取会议室描述-->
+        <IsGetRoomDesc val="0" />
+        <!--是否为顶层前置返回-->
+        <IsTopNode var="1"/>>
+        <!--该会议室列表所在节点ID-->
+        <RoomNodeID var="Node1" />
+        <RoomInfo>
+            <Name var="test1" />
+            <RoomAppID var="2" />
+            <!--会议最大用户数-->
+            <MaxUserCount var="100" />
+            <!--会议当前用户数-->
+            <CurUserCount var="20" />
+            <RoomID var="10" />
+        </RoomInfo>     
+    </cmd>
+    <!--转发用户请求进入会议室-->
+    <cmd id="30204">
+        <!--节点路由,上级节点ID在前面-->
+        <NodeIDRoute var="Node1#Node2#Node3" />
+        <!--用户从那个节点会话ID发起的请求-->
+        <UserSessionID var="777" />
+        <UserLoginType var="1" />       
+        <UserName var="test" />
+        <UserPassword var="1234" />
+        <!--所在会议室的节点ID-->
+        <RoomNodeID var="abcdf" />
+        <!--进入的会议室-->
+        <RoomID var="123" />    
+        <!--房间应用类型ID-->
+        <RoomAppID var="11" />
+    </cmd>
+    <!--转发用户请求进入会议室返回-->
+    <cmd id="30205">
+        <!--节点路由,上级节点ID在前面-->
+        <NodeIDRoute var="Node1#Node2#Node3" />
+        <!--用户从那个节点会话ID发起的请求-->
+        <UserSessionID var="777" />
+        <!--所在会议室的节点ID-->
+        <RoomNodeID var="abcdf" />
+        <!--进入的会议室-->
+        <RoomID var="123" />
+        <!--房间应用类型ID-->
+        <RoomAppID var="11" />      
+        <!--用户会议室权限1为主持人、2为出席、3为旁听-->
+        <UserRight var="1" />
+        <!--1、用户密码验证；2、会议室密码验证；3、匿名登录-->
+        <RoomVerifyMode var="1" />
+        <!--用户在该会议节点上的用户ID-->
+        <RoomUserID var="1000" />
+        <!--会议所在服务节点ID -->
+        <RoomSrvNodeID val="NodeID1$SID:10005$AID:11"/>
+
+        <!--会议所在上级服务节点ID -->
+        <ParentSrvNodeID val="NodeID2$SID:10005$AID:11"/>
+        <!--会议所在上级服务地址-->
+        <ParentSrvAddr var="TCP:127.0.0.1:8000" /> 
+        <!--会议所在上级服务应用ID-->
+        <ParentSrvAppID var="11" />     
+        <!--会议所在上级服务验证码-->
+        <ParentSrvAuthCode val="249129312739"/>
+    </cmd>  
+    <!--业务前置注销-->
+    <cmd id="30206">
+    </cmd>
+    <!--业务前置注销回应-->
+    <cmd id="30207">
+        <Result var="0" />
+    </cmd>
+    
+    <!--############################前置服务与会议服务开始############################-->
+    
+    <!--会议服务身份验证请求-->
+    <cmd id="30301">
+        <!--会议服务设备ID-->
+        <DevID val="1000" />
+        <!--设备验证码-->
+        <VerifyCode val="123" />
+    </cmd>
+    
+    <!--会议服务身份验证响应-->
+    <cmd id="30302">
+        <!--验证结果，0-成功，其他-失败-->
+        <OprResult var="0" />
+    </cmd>
+    
+    <!--查询电话网关请求-->
+    <cmd id="30303">
+		<!--请求标识-->
+		<ReqID val="111">
+        <!--房间号-->
+        <RoomID val="10000" />
+        <!--主叫用户Id-->
+        <CallerUserID val="10004" />
+        <!--会议已连接的电话网关列表-->
+        <ConnectedPhoneGwList>
+            <!--电话网关地址-->
+            <PhoneGwDevID val="devid1" /> 
+            <PhoneGwDevID val="devid2" /> 
+        </ConnectedPhoneGwList>
+        <!--请求呼叫电话列表-->
+        <ReqCallList>
+            <!--被叫号码-->
+            <CalleeNum val="13812345678" />
+            <CalleeNum val="13812345679" /> 
+        </ReqCallList>  
+    </cmd>
+    
+    <!--查询电话网关返回-->
+    <cmd id="30304">
+		<!--请求标识-->
+		<ReqID val="111">
+        <!--操作结果：
+           0x0000-成功
+           0x1001-未知错误
+           0x3001-企业剩余拨号路数不够
+           0x3002-网关剩余拨号路数不够
+           -->
+        <OprResult val="1" />
+        <!--剩余可拨号路数-->
+        <RemainCallCount val="1" />
+        <!--房间号-->
+        <RoomID val="10000" />
+        <!--主叫用户Id-->
+        <CallerUserID val="10004" />
+        <RepPhoneGwInfo>
+            <!--被叫号码-->
+            <CalleeNum val="13812345678" />
+            <!--PhoneGWAddr-->
+            <PhoneGwAddr val="TCP:192.168.1.200:8000" /> 
+            <!--checkcode-->
+            <PhoneGwCheckCode val="123456789" />
+            <!--电话网关设备ID-->
+            <PhoneGwDevID val="" />
+            <!--主叫号码，话机号码-->
+            <CallerNum val="12345678" />
+            <!--话机密码-->
+            <CallerPwd val="123456" />
+            <!--被叫电话用户ID-->
+            <CalleeUserID val="1234" />
+            <!--企业电话呼入点数令牌-->
+            <Token val="1111">
+        </RepPhoneGwInfo>  
+        <RepPhoneGwInfo>
+            <!--被叫号码-->
+            <CalleeNum val="13812345679" /> 
+            <!--PhoneGWAddr-->
+            <PhoneGwAddr val="TCP:192.168.1.200:8000" /> 
+            <!--checkcode-->
+            <PhoneGwCheckCode val="123456789" />
+            <!--电话网关设备ID-->
+            <PhoneGwDevID val="" />
+            <!--主叫号码，话机号码-->
+            <CallerNum val="12345678" />
+            <!--话机密码-->
+            <CallerPwd val="123456" />
+            <!--被叫电话用户ID-->
+            <CalleeUserID val="1234" />
+            <!--企业电话呼入点数令牌-->
+            <Token val="1111">
+        </RepPhoneGwInfo> 
+    </cmd>
+    
+    <!--############################前置服务与会议服务结束############################-->
+</root>

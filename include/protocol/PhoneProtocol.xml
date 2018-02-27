@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="GB2312"?>
+<root>
+	<!--会议服务连接电话网关请求-->
+	<cmd id="7001">
+		<!--房间号-->
+		<RoomID val="10000" />
+		<!--房间密码-->
+		<RoomPassword val="123456" />
+		<!--checkcode-->
+		<PhoneGwCheckCode val="123456789" />
+	</cmd>
+	
+	<!--会议服务连接电话网关返回-->
+	<cmd id="7002">
+		<!--房间号-->
+		<RoomID val="10000" />
+		<!--操作结果-->
+		<OprResult val="0" />
+	</cmd>	
+	
+	<!--会议服务向电话网关呼叫电话请求，旧方案-->
+	<cmd id="7003">	
+		<!--被叫号码-->
+		<CalleeNum val="13812345678" />
+		<!--被叫电话用户ID-->
+		<CalleeUserID val="1234" />
+		<!--被叫昵称-->
+		<CalleeNickName val="张三" />
+		<!--主叫号码，话机号码-->
+		<CallerNum val="12345678" />
+		<!--话机密码-->
+		<CallerPwd val="123456" />
+		<!--会议登录令牌-->
+		<Token val="">
+	</cmd>
+	
+	<!--会议服务向电话网关呼叫电话请求，新方案-->
+	<cmd id="7003">	
+		<!--被叫号码-->
+		<CalleeNum val="13812345678" />
+		<!--被叫昵称-->
+		<CalleeNickName val="张三" />
+		<!--主叫号码，话机号码-->
+		<CallerNum val="12345678" />
+		<!--主叫用户ID-->
+		<CallerUserID val="1352852" />
+		<!--邀请码-->
+		<InviteCode val="123456" />
+	</cmd>
+
+	<!--呼叫电话返回-->
+	<cmd id="7004">
+		<!--操作结果：0成功，1失败-->
+		<OprResult val="0" /> 
+		<!--被叫号码-->
+		<CalleeNum val="13812345678" />
+	</cmd>
+	
+	<!--挂机请求-->
+	<cmd id="7005">
+		<!--被叫号码-->
+		<CalleeNum val="13812345678" />
+	</cmd>
+	
+	<!--挂机响应-->
+	<cmd id="7006">
+		<!--操作结果：0成功，1失败-->
+		<OprResult val="0" /> 
+		<!--被叫号码-->
+		<CalleeNum val="13812345678" />
+	</cmd>
+	
+	<!--呼叫状态通知-->
+	<cmd id="7007">
+		<!--呼叫状态码
+	        CALLING =1,
+	        INCOMING,
+	        EARLY,
+	        CONNECTING,
+	        CONFIRMED,
+	        DISCONNECTED,
+		-->
+		<CallState val="10003" />
+		<!--被叫号码-->
+		<CalleeNum val="13812345678" />
+	</cmd>
+</root>

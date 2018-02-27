@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="GB2312"?>
+<root>
+	<!--###############################################################################-->
+	<!--############################Web后台与监控中心##################################-->
+	<!--WEB后台与监控中心协议头定义说明：																							 -->
+	<!--1、DWORD	dwHeadTag；4字节无符号整形长度，协议标识位，值为34935(十六进制0x8877)-->
+	<!--2、DWORD	dwLen;     4字节无符号整形长度，整个协议包长度											 -->
+	<!--###############################################################################-->
+	<!--WEB后台登陆请求-->
+	<cmd id="40000">
+		<!---->
+		<AccountNodeID val="nodeid" />
+		<!--1为用户帐号-->
+		<!--2为用户邮箱-->
+		<!--3为用户电话-->
+		<AccountLoginType val="1" />
+		<AccountName val="webuser" />
+		<Password val="1234" />		
+	</cmd>
+	<!--WEB后台登陆回应-->
+	<cmd id="40001">
+		<Result val="0" />
+		<AccountID val="1001" />
+		<!--1表示系统管理员，2表示部门管理员，3表示普通用户-->
+		<AccountType val="1" />
+	</cmd>
+	<!--查询MCU服务器地址请求-->
+	<cmd id="40002">
+		<!--1表示所有MCU，0表示指定MCU-->
+		<GetAllMCU val="0" />
+		<MCUServiceID val="1001" />
+	</cmd>
+	<!--查询MCU服务器地址返回-->
+	<cmd id="40003">
+		<Result val="0" />
+		<MCU>
+			<MCUServiceID val="1001" />
+			<NetworkAddr>			
+				<AddrName val="Internet Link" />
+				<!--网线连接是否正常-->
+				<IsCableConnect val="1" />
+				<!--是否自动获得IP地址-->
+				<AutoGetIP val="0" />
+				<IPConfig>
+					<IPAddr val="192.168.0.18" />
+					<SubMask val="255.255.255.0" />
+				</IPConfig>
+				<IPConfig>
+					<IPAddr val="192.168.1.18" />
+					<SubMask val="255.255.255.0" />
+				</IPConfig>				
+				<DefaultGY val="192.168.0.1" def="1"/>
+				<DefaultGY val="192.168.1.1" def="0"/>
+				<!--自动分配DNS,在AutoGetIP为1时有效-->
+				<AutoGetDNS val="0" />
+				<DNSServer val="192.168.0.1" def="1"/>
+				<DNSServer val="192.168.0.1" def="0"/>
+				<PhysicalAddr val="00-50-56-C0-00-08" />
+			</NetworkAddr>
+			<NetStaticMap>
+				<!--是否启用静态映射 1启用，0不启用-->
+				<IsAddrStaticMap val="1" />
+				<NetAddrIP val="222.77.181.191" />
+				<NetAddrIP val="222.77.181.191" />
+			</NetStaticMap>
+		</MCU>
+	</cmd>
+	
+	<!--操作MCU服务器地址请求-->
+	<cmd id="40004">
+		<MCU>
+			<MCUServiceID val="1001" />
+			<NetworkAddr>
+				<!--操作类型 1-更新地址 2-禁用地址 3-启用地址(现在只支持更新操作)-->
+				<AddrOperation val="2"/>
+				<AddrName val="Internet Link" />
+				<PhysicalAddr val="00-50-56-C0-00-08" />				
+				<AutoGetIP val="0" />
+				<IPConfig>
+					<IPAddr val="192.168.0.18" />
+					<SubMask val="255.255.255.0" />
+				</IPConfig>
+				<IPConfig>
+					<IPAddr val="192.168.1.18" />
+					<SubMask val="255.255.255.0" />
+				</IPConfig>				
+				<DefaultGY val="192.168.0.1" def="1"/>
+				<DefaultGY val="192.168.1.1" def="0"/>
+				<!--自动分配DNS,在AutoGetIP为1时有效-->
+				<AutoGetDNS val="0" />
+				<DNSServer val="192.168.0.1" def="1"/>
+				<DNSServer val="192.168.0.1" def="0"/>
+			</NetworkAddr>
+			<NetStaticMap>
+				<!--是否启用静态映射 1启用，0不启用-->
+				<IsAddrStaticMap val="1" />
+				<NetAddrIP val="222.77.181.191" />
+				<NetAddrIP val="222.77.181.191" />
+			</NetStaticMap>
+		</MCU>
+	</cmd>
+	<!--操作MCU服务器地址返回-->
+	<cmd id="40005">
+		<Result val="0" />
+	</cmd>
+	<!--业务重置请求-->
+	<cmd id="40006">
+		<MCUServiceID val="1001" />
+		<ServiceID val="2" />
+		<!--业务重置类型 1-重启，2-停止-->
+		<ServiceOperation val="1" />
+	</cmd>
+	<!--业务重置返回-->
+	<cmd id="40007">
+		<Result val="0" />>
+	</cmd>
+	<!--服务器重置请求-->
+	<cmd id="40008">
+		<MCUServiceID val="1001" />
+		<!--服务器重置类型 1-重启，2-关机，3-注销-->
+		<ServerOperation val="1" />
+	</cmd>
+	<!--服务器重置返回-->
+	<cmd id="40009">
+		<Result val="0" />
+	</cmd>
+	<!--请求MCU运行状态请求-->
+	<cmd id="40010">
+		<!--1表示所有MCU，0表示指定MCU-->
+		<GetAllMCU val="0" />
+		<MCUServiceID val="1001" />
+	</cmd>
+	<!--请求MCU运行状态返回-->
+	<cmd id="40011">
+		<Result val="0" />		
+		<MCUServiceID val="1001" />
+		<CPU val="23" />
+		<!--单位K-->
+		<MemoryAvailable val="10000" />
+		<!--单位K-->
+		<MemoryTotal val="1000000" />
+		<!--单位M-->
+		<FreeDisk val="1000" />
+		<!--单位M-->
+		<DiskTotal val="20000" />
+		<!--单位K-->
+		<NetUp val="50000" />
+		<!--单位K-->
+		<NetDown val="50000" />
+	</cmd>	
+	<!--请求业务服务器列表-->
+	<cmd id="40012">
+		<!--1表示所有MCU，0表示指定MCU-->
+		<GetAllMCU val="0" />
+		<MCUServiceID val="1001" />
+	</cmd>
+	<!--请求业务服务器列表返回-->
+	<cmd id="40013">
+		<!--1表示所有MCU，0表示指定MCU-->
+		<Result val="0" />		
+		<MCU>
+			<MCUServiceID val="1001" />
+			<ServiceList>
+				<ServiceID val="1" />
+				<ServiceDesc val="GTone Conf System" />
+				<!--业务状态，1为正常 2为没有启动 3为告警-->
+				<ServiceStatus val="1" />
+			</ServiceList>
+			<ServiceList>
+				<ServiceID val="2" />
+				<ServiceDesc val="GTone IM System" />
+				<!--业务状态，1为正常 2为没有启动 3为告警-->
+				<ServiceStatus val="1" />
+			</ServiceList>		
+		</MCU>
+	</cmd>
+	<!--授权激活请求-->
+	<cmd id="40016">
+		<MCUServiceID val="1001" />
+		<!--授权文件存在的路径-->
+		<LicenseFilePath val="c:\\VTMeeting" />
+		<LicenseFileName val="license.bin" />
+	</cmd>
+	<!--授权激活返回-->
+	<cmd id="40017">
+		<Result val="0" />
+	</cmd>
+	<!--打开/关闭/查询动态地址注册功能-->
+	<cmd id="40018">
+		<SDN var="test" />
+		<!--操作码, 0 关闭动态地址注册功能， 1 打开动态地址注册功能，2 为查询 -->
+		<IsEnable var="0" /> 
+		<!--MCU WEB后台访问端口，仅打开动态地址时使用-->
+		<WebPort val="8080"/>
+		<!--MCU WEB访问路径，仅打开动态地址时使用-->
+		<WebPath val="vmeeting"/>
+	</cmd>
+	<!--动态地址注册功能返回-->
+	<cmd id="40019">
+		<Result val="0" />
+		<!--当前SDN的状态，1表示启用动态地址注册，0表示未启用-->
+		<IsEnable var="0" /> 
+	</cmd>
+	<!--查询网络连接类型-->
+	<cmd id="40020">
+		<MCUServiceID val="1001" />
+	</cmd>
+	<!--查询服务器网络连接类型回复-->
+	<cmd id="40021">
+		<Result val="0" />>
+		<!--网络连接类型，0表示树状连接(不能垮级访问网络)，1表示扁平连接（能垮级访问网络）-->
+		<NetConnType var="0" />		
+	</cmd>
+	<!--设置网络连接类型-->
+	<cmd id="40022">
+		<MCUServiceID val="1001" />
+		<!--网络连接类型，0表示树状连接(不能垮级访问网络)，1表示扁平连接（能垮级访问网络）-->
+		<NetConnType var="0" />		
+	</cmd>
+	<!--设置服务器网络连接类型回复-->
+	<cmd id="40023">
+		<Result val="0" />
+	</cmd>
+	<!--生成注册文件的请求-->
+	<cmd id="40024">
+		<!--公司名称-->
+		<Company val="test" />
+		<!--公司地址-->
+		<Address val="test" />
+		<!--邮编-->
+		<Zipcode val="518000" />
+		<!--联系人-->
+		<User val="test" />
+		<!--电话-->
+		<Phone val="075588888888" />
+		<!--电子邮箱-->
+		<Email val="test@test.com" />
+		<!--产品序列号，可选项-->
+		<Serno val="XXXXX-XXXXX-XXXXX-XXXXX" />
+		<!--注册文件存在的路径-->
+		<RegisterFilePath val="c:\\tomcat\\VTMeeting" />
+	</cmd>
+	<!--生成注册文件返回-->
+	<cmd id="40025">
+		<Result val="0" />
+		<!--注册文件的名称-->
+		<RegisterFileName val="register.dat" />
+	</cmd>
+	<!--更新设备ID-->
+	<cmd id="40026">
+		<DevID val="6666" />
+	</cmd>
+	<!--更新设备ID回复-->
+	<cmd id="40027">
+		<Result val="0" />
+	</cmd>
+</root>	

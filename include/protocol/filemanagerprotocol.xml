@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!--登录文档业务服务器-->
+	<cmd id="8700" ver="0"> 
+		<RoomNodeID val="test"/>
+		<RoomID val="10000"/> 
+		<LoginNameType val="1"/>
+		<UserNodeID val="test"/>
+		<UserName val="guest1"/>
+		<UserPassword val="1111"/>
+		<RoomPassword val="1111"/>
+		<!--级联时寻找路由,客户端不需填写-->
+		<LoginNodeID val="test"/>
+		<!--用户登录节点用户ID,客户端不需填写-->
+		<LoginUserID val="10000"/>
+		<!--登录服务器IP 端口号-->
+		<LoginServerAddr var="www.fsmeeting.com:1089" />
+	</cmd> 
+	
+	<!--登录结果返回-->
+	<cmd id="8800"  ver="0">
+		<Result val="0"/>
+		<UserID val="10000"/>  
+		<!--是否允许将文件保存在服务器上-->
+		<EnableSaveFile val="1"/>
+		<!--用户权限(主持人,参与者,旁听用户)-->
+		<Right val="1"/>
+		<!--级联时寻找路由-->
+		<LoginNodeID val="test"/>
+		<LoginUserID val="10000"/>
+	</cmd>
+	
+	<!--退出文档业务服务器-->
+	<cmd id="8701">
+	</cmd>
+
+	<!--服务器通知客户端退出-->
+	<cmd id="8801">
+		<UserID val="10000"/>  
+	</cmd>
+	
+	<!--客户端请求上传文件-->
+	<cmd id="8702">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<SaveInServer val="0"/>
+	</cmd>
+	
+	<!--服务器应答上传文件请求-->
+	<cmd id="8802">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<Result val="0"/>
+		<CheckCode val="39395947"/>
+		<SrvAppID val="9"/>
+		<SrvAddrLink val="192.168.0.145:8000;61.151.247.1:8000;"/>
+	</cmd>
+ 
+	<!--客户端请求将文件加入文件柜-->
+	<cmd id="8703">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+	    <GuidParent val="83183AFE-0337-47fd-89BA-50D9DFB11C55"/>	
+		<FileDisplayName val="test"/>
+		<FileName val="test"/>
+		<FileExName val="mp3"/>
+		<FileSize val="93429"/>
+		<CreatorID val="10000"/>
+		<FileType val="1"/>
+		<FileWidth val="320"/>
+		<FileHeight val="240"/>
+		<SubFileCount val="1"/>
+		<CheckCode val="39395947"/>
+		<FileUrl val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}/test.mp3"/>
+		<ServerAppID val="9"/>
+		<ServerAddrLink val="192.168.0.145:8000;61.151.247.1:8000;"/>
+ 	
+	</cmd>
+  
+  	<!--服务器返回新加文件结果-->
+	<cmd id="8803">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<Result val="0"/> 	
+	</cmd>
+	
+	<!--客户端请求刷新文档列表-->
+	<cmd id="8704">
+	</cmd>
+     
+  	<!--服务器通知新增文档列表项--> 	
+ 	<cmd id="8804"> 
+ 		<File>
+			<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+			<GuidParent val="83183AFE-0337-47fd-89BA-50D9DFB11C55"/>
+			<FileDisplayName val="test"/>
+			<FileName val="test"/>
+			<FileExName val="mp3"/>
+			<FileSize val="93429"/>
+			<CreatorID val="10000"/>
+			<FileType val="1"/>
+			<FileWidth val="320"/>
+			<FileHeight val="240"/>
+	 		<SubFileCount val="1"/> 
+			<CheckCode val="39395947"/>
+			<!--  cumeeting 文档时间   -->
+			<FileCreateTime val="39395947"/>
+			
+			<FileUrl val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}/test.mp3"/>
+			<ServerAppID val="9"/>
+			<ServerAddrLink val="192.168.0.145:8000;61.151.247.1:8000;"/>
+		</File> 
+ 		<File>
+			<Guid val="{4057514F-9AB9-4ed8-B593-DFC870987697}"/>
+			<GuidParent val="83183AFE-0337-47fd-89BA-50D9DFB11C55"/>
+			<FileDisplayName val="test"/>
+			<FileName val="hello"/>
+			<FileExName val="bmp"/>
+			<FileSize val="234234"/>
+			<CreatorID val="10001"/>
+			<FileType val="1"/>
+			<FileWidth val="320"/>
+			<FileHeight val="240"/>
+	 		<SubFileCount val="1"/> 
+			<CheckCode val="39395947"/>
+			<!--  cumeeting 文档时间   -->
+			<FileCreateTime val="2014-01-11 12:12:30"/>
+
+			<FileUrl val="{4057514F-9AB9-4ed8-B593-DFC870987697}/hello.bmp"/>
+			<ServerAppID val="9"/>
+			<ServerAddrLink val="192.168.0.145:8000;61.151.247.1:8000;"/>
+		</File>
+ 	</cmd>
+
+  	<!--客户端请求删除文件-->
+	<cmd id="8705">
+		<Guid val="{4057514F-9AB9-4ed8-B593-DFC870987697}"/>
+	</cmd>
+
+  	<!--服务器返回删除文件结果-->
+	<cmd id="8805">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<Result val="0"/> 	
+	</cmd>
+	
+  	<!--服务器通知删除文件列表项-->
+	<cmd id="8806">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+	</cmd>
+
+ 	<!--客户端请求新建文件夹,逻辑上的文件夹，仅写数据库即可-->
+	<cmd id="8707">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+	        <GuidParent val="83183AFE-0337-47fd-89BA-50D9DFB11C55"/>	
+		<FileDisplayName val="test"/>	
+		<CreatorID val="10000"/>
+		<FileType val="0"/>
+	</cmd>
+
+  	<!--服务器返回新建文件夹结果-->
+	<cmd id="8807">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<Result val="0"/>
+	</cmd>	
+	
+	<!--服务器通知新增文件夹--> 	
+	<cmd id="8808">
+		<FileDir>
+			<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+	        	<GuidParent val="83183AFE-0337-47fd-89BA-50D9DFB11C55"/>	
+			<FileDisplayName val="test"/>	
+			<CreatorID val="10000"/>
+			<FileType val="0"/>
+		<FileDir>
+	</cmd>
+
+ 	<!--客户端请求删除文件夹-->
+	<cmd id="8709">
+		<Guid val="{4057514F-9AB9-4ed8-B593-DFC870987697}"/>
+	</cmd>
+
+  	<!--服务器返回删除结果-->
+  	<cmd id="8809">
+		<Guid val=""/>
+		<Result val="0"/>
+	</cmd>
+
+  	<!--服务器通知删除文件夹-->
+  	<cmd id="8810">
+	  	<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+	</cmd>
+
+	<!--客户端请求重命名文件、文件夹-->
+	<cmd id="8711">
+		<Guid val="{4057514F-9AB9-4ed8-B593-DFC870987697}"/>
+		<FileDisplayName val="test"/>
+	</cmd>
+
+  	<!--服务器通知重命名文件、文件夹-->
+  	<cmd id="8811">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<Result val="0"/>
+		<FileDisplayName val="test"/>
+	</cmd>
+	
+	<!--客户端请求移动文件、文件夹-->
+	<cmd id="8712">
+		<Guid val="{4057514F-9AB9-4ed8-B593-DFC870987697}"/>
+		<ParentGuid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+	</cmd>
+
+  	<!--服务器通知移动文件、文件夹-->
+  	<cmd id="8812">
+		<Result val="0"/>
+		<Guid val="{4057514F-9AB9-4ed8-B593-DFC870987697}"/>
+		<ParentGuid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+	</cmd>
+	
+	<!--客户端请求接收文件-->
+	<cmd id="8713">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<CheckCode val="39395947"/>
+		<SrvAppID val="9"/>
+		<SrvAddrLink val="192.168.0.145:8000;61.151.247.1:8000;"/>
+	</cmd>
+	
+	<!--服务器应答接收文件请求-->
+	<cmd id="8813">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<Result val="0"/>
+		<CheckCode val="39395947"/>
+		<SrvAppID val="9"/>
+		<SrvAddrLink val="192.168.0.145:8000;61.151.247.1:8000;"/>
+	</cmd>
+	
+	<!--请求服务器设置文件共享给指定会议室-->
+	<cmd id="8714">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<RoomNodeID val="test"/>
+		<RoomID val="10000"/> 
+	</cmd>
+	
+	<!--服务器应答共享文件请求-->
+	<cmd id="8814">
+		<Guid val="{83183AFE-0337-47fd-89BA-50D9DFB11C87}"/>
+		<Result val="0"/>
+	</cmd>
+</root>
+
+
+
+
+
+
+
+
+
+
+

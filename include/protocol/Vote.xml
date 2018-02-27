@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Vote>
+	<ID>239423948</ID>
+	<Name>test</Name>
+	<Desc>test</Desc>
+	<Duration>15</Duration>
+	<RememName>0</RememName>
+	<VoteItem>
+		<Type>1</Type>
+		<Content>hello</Content>
+		<Option>A</Option>
+		<Option>B</Option>
+		<Option>C</Option>
+	</VoteItem>
+	<VoteIte>
+		<Type>2</Type>
+		<Content>why</Content>
+		<Option>A</Option>
+		<Option>B</Option>
+		<Option>C</Option>
+	</VoteItem>
+</Vote>

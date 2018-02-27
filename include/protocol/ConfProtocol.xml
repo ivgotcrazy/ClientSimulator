@@ -1,0 +1,1149 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <!--客户端请求登录房间-->
+    <cmd id="6501" ver="0">
+        <!--1为视频会议终端-->
+        <!--2为IM客户端-->          
+        <ClientType val="1" /> 
+        <!--1为桌面终端-->
+        <!--2为硬件终端-->
+        <!--3为移动终端-->
+        <TerminalType val="1" /> 
+        <!--会议所在节点ID-->
+        <RoomSrvNodeID val="NodeID1$SID:10005$AID:11"/>
+        <!--登录的会议室ID-->
+        <RoomID val="10000"/>
+        <!--用户ID,由客户端向业务前置获取-->  
+        <UserID val="10000"/>
+        <!--用户名-->
+        <UserName val="guest1"/> 
+        <!--用户端IP地址,客户端不需要填写-->
+        <UserIP val="192.168.1.205"/>
+        <!--用户类型 0-匿名用户 1-注册用户-->
+        <UserType val="1"/>
+        <!--进入会议室的点数令牌,从客户端向用户路由服务组件获取--> 
+        <Token val="dlfslfj" />
+        <!--登录校验模型  1、用户密码验证；2、会议室密码验证；3、匿名登录-->
+        <VerifyMode val="1"/>
+        <!--会议室密码，当登录校验模型为2的时候有效-->
+        <RoomPassword val="123456"/>
+        <!--登录服务器IP 端口号-->
+        <LoginServerAddr var="www.fsmeeting.com:1089" />
+        <Capability>
+            <!--客户端模式，1完整模式，2合流模式，3最小模式-->
+            <Mode val="0"/>
+            <!--客户端下行带宽,单位bps-->
+            <DownBitrate val="500000"/>
+        </Capability>
+        <!--客户端使用的语言代码-->
+        <LanCode>936</LanCode>
+    </cmd> 
+    
+    <!--会议如果已锁定，服务器通知登录客户端正在等待主持人开门-->
+    <cmd id="6617">
+    </cmd> 
+
+    <!--服务器返回房间登录结果-->
+    <cmd id="6601" >
+        <Result val="0"/>
+        <UserSrvNodeID val="NodeID1$SID:10005$AID:11"/>
+        <!--节点表-->
+        <NodeInfo>
+            <Node>
+                <!--节点ID-->
+                <NodeID val="NodeID1"/>
+                <!--节点名称-->
+                <NodeName val="my NodeID 1"/>
+                <!--上级节点ID-->
+                <ParentNodeID val=""/>
+            </Node>
+            <Node>
+                <!--节点ID-->
+                <NodeID val="NodeID2"/>
+                <!--节点名称-->
+                <NodeName val="my NodeID 2"/>
+                <!--上级节点ID-->
+                <ParentNodeID val="NodeID1"/>
+            </Node>
+        </NodeInfo>
+        <!--部门列表-->
+        <DeptInfo>
+            <Dept>
+                <!--部门ID-->
+                <DeptID val="1"/>
+                <!--部门名称-->
+                <DeptName val="test"/>
+                <!--上级部门ID-->
+                <ParentDeptID val="0"/>
+                <!--所属节点ID-->
+                <NodeID val="NodeID2"/>
+            </Dept>
+            <Dept>
+                <!--部门ID-->
+                <DeptID val="2"/>
+                <!--部门名称-->
+                <DeptName val="test2"/>
+                <!--上级部门ID-->
+                <ParentDeptID val="1"/>
+                <!--所属节点ID-->
+                <NodeID val="NodeID2"/>
+            </Dept>
+        </DeptInfo>
+        <!--房间信息-->
+        <RoomInfo>
+            <!--房间名称-->
+            <Name val="test1"/>
+            <!--房间模式 0-自由模式 1-完全主控模式-->
+            <Mode val="0"/> 
+            <!--房间是否被锁定-->
+            <Lock val="0"/>
+            <!--是否正在投票-->
+            <Vote val="0"/>
+            <EnableRecord val="1"/>
+            <!--是否允许文字聊天-->
+            <EnableChat val="1"/>
+            <!--是否允许文字私聊-->
+            <EnableP2PChat val="1"/>
+            <!--是否允许对所有人聊天-->
+            <EnablePubChat val="1"/>
+            <!--是否允许发送文件-->
+            <EnableSendFile val="1" />
+            <EnableSaveWB val="1" />
+            <EnableKeepVideo val="1" />
+            <!--会议开始时间-->
+            <StartTime val="23434935094358"/>
+            <!--服务器当前时间-->
+            <CurTime val="24453053405889"/>
+            <RoomConfig>
+                <!--是否允许音频功能-->
+                <EnableAudio val="1"/> 
+                <!--是否允许视频功能-->
+                <EnableVideo val="1"/> 
+                <!--是否允许白板功能-->
+                <EnableWB val="1"/> 
+                <EnableApp val="1"/> 
+                <EnableMedia val="1"/> 
+                <EnableWeb val="1"/>
+                <EnableChat val="1"/>
+                <EnableFile val="1"/>
+                <!--是否允许多压功能-->
+                <EnableMultiVideo val="1"/> 
+                <!--是否允许双显功能-->
+                <EnableDualDisp val="1"/> 
+                <!--是否支持音视频合成-->
+                <EnableAVMix val="0"/>
+                <!--窗口模式-->
+                <WndMode val="0"/>
+                <!--音频发言路数-->
+                <AudioBrdCount val="1"/>                
+                <!--视频广播路数-->
+                <VideoBrdCount val="1"/>                
+                <!--主持人接收视频路数-->
+                <VideoRcvCountChair val="1"/>               
+                <!--普通用户接收视频路数-->
+                <VideoRcvCountAttender val="1"/>    
+                <!--视频宽度-->
+                <VideoWidth val="720"/>
+                <!--视频高度-->
+                <VideoHeight val="576"/>
+                <!--视频码流-->
+                <VideoBitrate val="1000"/>
+                <!--视频帧速率-->
+                <VideoFrameRate val="25"/>
+            </RoomConfig>
+        </RoomInfo>
+        <!--会议室音视频参数设置--> 
+        <AVSetting>   
+            <!--是否使用音视频参数设置-->
+            <UseSetting val="1"/> 
+            <!--视频编码器ID 2-MPEG4 3-H264-->
+            <VideoCodec val="2"/>
+            <!--视频大小,0-160*120 1-176*144 2-320*240 3-352*288 4-640*480 5-702*576 6-720*576-->
+            <VideoSize val=" 2"/> 
+            <!--视频压缩模式 1-恒定质量 2-恒定码流-->
+            <VideoEncoderMode val="1"/>
+            <!--视频码流,单位KBPS-->
+            <VideoBitrate val="128"/>
+            <!--视频质量-->
+            <VideoQuality val="80"/>
+        </AVSetting>
+        <!--本地用户信息-->   
+        <UserInfo>
+            <!--用户端IP地址-->
+            <UserIP val="192.168.1.205"/>
+            <!--本地用户权限 1-旁听者 2-参与者 3-主持人-->
+            <Right val="1"/> 
+            <!--用户显示名-->
+            <DisplayName val="guest1"/>
+            <!--用户级别 0-普通员工 1-部门领导 2-公司领导--> 
+            <UserLevel val="3"/>
+            <!--用户投票权限，1 允许，0不允许-->
+            <VoteRight val="1"/>
+            <!--部门ID-->
+            <DeptID val="1"/>
+            <!--用户所属的节点-->
+            <UserNodeID val="NodeID1"/>
+            <Tel val="0755-83504419"/>
+            <Mobile val="13989898989"/>
+            <EMail val="test@test.com"/>
+            <Sex val="0"/>
+            <!--电话呼叫权限 -->
+            <CallRight val="1"/>
+            <!--企业购买的服务 0-购买任何服务  1-电话会议产品-->
+            <BuyServer val="1"/>
+        </UserInfo> 
+        <!--房间路由节点ID-->
+        <RouteNodeID var="NID:NodeID3$SID:10005$AID:11"/>
+        <!--音视频服务组件信息-->
+        <AVServer> 
+            <!--服务组件应用ID-->
+            <AppID val="1"/> 
+            <!--验证码-->
+            <CheckCode val="8888"/>
+            <!--服务组件地址-->
+            <Addr val="TCP:127.0.0.1:8000"/>
+            <Guid val="{CAF614F2-1230-4bff-960D-926B52968E31}"/>
+        </AVServer> 
+        <!--应用程序共享服务组件信息-->
+        <VNCServer>
+            <AppID val="3"/>
+            <CheckCode val="8888"/>
+            <Addr val="TCP:127.0.0.1:8000"/>
+            <Guid val="{18895098-14F1-456c-94EC-7C1CC877DD20}"/>
+        </VNCServer> 
+        <!--白板服务组件信息-->
+        <WBDoc>
+            <AppID val="5"/>
+            <CheckCode val="8888"/>
+            <Addr val="TCP:127.0.0.1:8000"/>
+            <Guid val="{567BA998-85E1-44a2-82D4-317ED042DD20}"/>
+        </WBDoc> 
+        <!--WEB共享服务组件信息-->
+        <WebDoc>
+            <AppID val="5"/>
+            <CheckCode val="8888"/>
+            <Addr val="TCP:127.0.0.1:8000"/>
+            <Guid val="{FC1171B0-EC58-42f6-99ED-A1EB341A2965}"/>
+        </WebDoc> 
+        <!--文件业务服务组件信息,客户端通过用户名登录文件业务服务组件,所以无验证码-->
+        <FilesServer>
+            <AppID val="6"/>
+            <Addr val="TCP:127.0.0.1:8000"/>
+        </FilesServer>  
+    </cmd> 
+    
+    <!--客户端初始化完成，服务器收到之后发送用户列表和窗口状态消息-->
+    <cmd id="6517">
+    </cmd> 
+    
+    <!--服务器返回当前在线用户列表-->
+    <!--当有新用户登录时,服务器也通过该消息通知其他用户-->
+    <cmd id="6602">
+        <User>
+            <UserID val="10002"/>  
+            <!--用户权限--> 
+            <!--1 旁听 -->
+            <!--2 出席 -->
+            <!--3 主持人 -->
+            <Right val="2" /> 
+            <!--用户级别-->
+            <!--0、普通员工；1、部门领导；2、公司领导 -->
+            <UserLevel val="0" />
+            <!--用户投票权限，1 允许，0不允许-->
+            <VoteRight val="1"/>
+            <!--用户名-->
+            <Name val="guest2"/> 
+            <!--用户端IP地址-->
+            <UserIP val="192.168.1.205"/>
+            <!--用户显示名-->
+            <DisplayName val="guest2"/>
+            <!--用户类型 0-匿名用户 1-注册用户-->
+            <UserType val="1"/>
+            <!--0 没有数据控制权 1 等待数据控制权 2 已获得数据控制权-->
+            <DataState val="0"/>
+            <!--0 没有屏幕广播 2 正在屏幕广播-->
+            <VNCState val="0"/>
+            <!--该用户是否允许文字聊天,为0时表示该用户被禁言-->
+            <EnableChat val="1"/>
+            <!--部门ID-->
+            <DeptID val="1"/>
+            <!--用户所属的节点-->
+            <UserNodeID val="NodeID1"/>
+            <!--用户登录的服务节点ID-->
+            <UserSrvNodeID val="NodeID1$SID:10005$AID:11"/>
+            <Tel val="0755-83504419"/>
+            <Mobile val="13989898989"/>
+            <EMail val="test@test.com"/>
+            <Sex val="0"/>
+            <!--音频信息列表-->
+            <Audio>  
+                <!--音频ID,对应于音频媒体ID,媒体ID为1的定义为用户发言用音频-->
+                <ID val="1"/>  
+                <!--音频名称-->
+                <Name val="Main"/>
+                <!--音频状态,0 未发言 1 等待发言 2 正在发言-->
+                <State val="2"/>
+            </Audio> 
+            <Audio>
+                <ID val="2"/>
+                <Name val="Left"/>
+                <State val="0" />
+            </Audio>
+            <!--视频信息列表-->
+            <Video>
+                <!--视频ID,对应于视频媒体ID-->
+                <ID val="1"/> 
+                <!--视频名称-->
+                <Name val="Main"/>
+                <!--0 没有广播 2 正在广播-->
+                <State val="0"/> 
+            </Video>
+            <Video>
+                <ID val="2"/>
+                <Name val="Left"/>
+                <State val="0"/> 
+            </Video>
+            <!--私聊状态-->
+            <PrivateTalk>
+                <DstUserID val="10001"/>
+                <State val="1"/>
+            </PrivateTalk>
+            <!--1为桌面终端-->
+            <!--2为硬件终端-->
+            <!--3为移动终端-->
+            <TerminalType val="1" /> 
+            <AudioShareID val="0xff"/>
+            <VideoShareID val="0xff"/>
+            <!--是否关闭声音输出-->
+            <AudioOutMute val="0"/>
+            <!--分组会议状态，1表示正在进行分组会议 0表示在主会议-->
+            <GroupState val="1"/>
+            <!--白板标注权限 0 不能标注 2 允许标注-->
+            <WBMarkState val="2"/>
+        </User>
+        <User>
+            <UserID val="10003"/>
+            <Right val="2" />
+            <UserLevel val="0" />
+            <VoteRight val="1"/>
+            <Name val="guest3"/>
+            <UserIP val="192.168.1.205"/>
+            <DisplayName val="guest3"/>
+            <UserType val="1"/>
+            <DataState val="0"/>
+            <VNCState val="0"/>
+            <EnableChat val="1"/>
+            <DeptID val="1"/>
+            <UserNodeID val="NodeID1"/>
+            <UserSrvNodeID val="NodeID1$SID:10005$AID:11"/>
+            <Audio>
+                <ID val="1"/> 
+                <Name val="Left"/>
+                <State val="0"/>
+            </Audio>
+            <Video>
+                <ID val="1"/> 
+                <Name val="Left"/>
+                <State val="0"/> 
+            </Video>
+            <Video>
+                <ID val="2"/> 
+                <Name val="Right"/>
+                <State val="0"/> 
+            </Video>
+            <!--私聊状态-->
+            <PrivateTalk>
+                <DstUserID val="10001"/>
+                <State val="1"/>
+            </PrivateTalk>
+            <TerminalType val="1" /> 
+            <AudioOutMute val="0"/>
+            <!--分组会议状态，1表示正在进行分组会议 0表示在主会议-->
+            <GroupState val="1"/>
+            <WBMarkState val="2"/>
+        </User>  
+    </cmd> 
+    
+    <!--请求离线用户列表-->
+    <cmd id="6503">
+    </cmd>
+    
+    <!--服务器返回离线用户列表-->
+    <cmd id="6603">
+        <User>
+            <UserID val="10002"/>  
+            <!--用户权限-->
+            <Right val="2" />
+            <UserLevel val="0" />
+            <!--用户名-->
+            <Name val="guest2"/> 
+            <!--用户显示名-->
+            <DisplayName val="guest2"/>
+            <!--部门ID-->
+            <DeptID val="1"/>
+            <!--用户所属的节点-->
+            <UserNodeID val="NodeID1"/>         
+            <Tel val="0755-83504419"/>
+            <Mobile val="13989898989"/>
+            <EMail val="test@test.com"/>
+            <Sex val="0"/>
+        </User>
+        <User>
+            <UserID val="10003"/>
+            <Right val="2" />
+            <UserLevel val="0" />
+            <Name val="guest3"/>
+            <DisplayName val="guest3"/>
+            <DeptID val="1"/>
+            <!--用户所属的节点-->
+            <UserNodeID val="NodeID1"/>
+        </User>  
+    </cmd> 
+
+    <!--当用户登录会议室时,如果会议室被锁定,则通知主持人有人敲门-->
+    <cmd id="6604">
+        <UserID val="1002"/> 
+        <DisplayName val="guest3"/> 
+        <!--敲门用户是否还在线-->
+        <Online val="1"/>
+    </cmd>
+    
+    <!--主持人响应是否允许敲门者进入会议室-->
+    <cmd id="6504">
+        <UserID val="1002"/>
+        <!--是否允许 0-拒绝 1-允许-->
+        <Allow val="1"/> 
+    </cmd>
+    
+    <!--用户请求退出会议室-->
+    <cmd id="6505">
+        <UserID val="10000"/>
+        <!--会议节点ID-->
+        <RoomSrvNodeID val="NodeID1$SID:10005$AID:11"/>
+        <!--登录的会议室ID-->
+        <RoomID val="10000"/>
+    </cmd> 
+    
+    <!--服务器通知其他用户有用户退出-->
+    <cmd id="6605">
+        <UserID val="10000"/>
+    </cmd> 
+    
+    <!--主持人踢出某用户-->
+    <cmd id="6506">
+        <UserID val="10000"/>
+    </cmd> 
+    
+    <!--服务器通知被踢出用户-->
+    <cmd id="6606">
+        <!--踢人者用户ID-->
+        <KickID val="10001"/>
+        <!--被踢者用户ID-->
+        <UserID val="10000"/>
+    </cmd> 
+    
+    <!--主持人关闭房间-->
+    <cmd id="6507">
+        <!--关闭原因-->
+        <Reason val="0"/>
+        <Description val="Not enough money."/>            
+    </cmd> 
+        
+    <!--服务器关闭房间-->
+    <cmd id="6607">
+        <!--关闭原因-->
+        <Reason val="0"/>
+        <Description val="Not enough money."/>            
+    </cmd> 
+    
+    <!--用户更新本地的音视频设备信息-->
+    <cmd id="6508">    
+        <Audio>  
+        <!--操作类型 1-增加设备 2-修改设备 3-删除设备-->
+            <Operation val="1"/>
+            <ID val="1"/>
+            <Name val="Left"/>
+        </Audio>
+    <Video>  
+            <Operation val="1"/>
+            <ID val="1"/>
+            <Name val="Main"/>
+        </Video>        
+    </cmd>
+    
+    <!--服务器通知用户音视频设备信息变更-->
+    <cmd id="6608">
+        <!--设备信息变更的用户ID-->
+        <UserID val="1000"/>
+        <Audio>  
+        <!--操作类型 1-增加设备 2-修改设备 3-删除设备-->
+            <Operation val="1"/>
+            <ID val="1"/>
+            <Name val="Left"/>
+        </Audio>
+        <Video>  
+            <Operation val="1"/>
+            <ID val="1"/>
+            <Name val="Main"/>
+        </Video>        
+    </cmd>
+    
+    <!--改变用户状态-->
+    <!--当用户发言状态、数据控制状态、音视频广播状态等改变时，都通过这个命令进行控制-->
+    <cmd id="6509">
+        <!--被改变状态的用户ID-->
+        <UserID val="1000"/>
+        <!--可以同时改变以下状态的一个或多个-->
+        <!--音频状态-->
+        <Audio>
+            <ID val="1"/>
+            <State val="1"/>
+        </Audio>
+        <!--视频状态-->
+        <Video>
+            <ID val="1"/>
+            <State val="0"/>
+        </Video>
+        <!--主讲状态-->
+        <DataState val="0"/>
+        <!--屏幕共享状态-->
+        <VNCState val="0"/>
+        <!--私聊状态-->
+        <PrivateTalk>
+            <!--对方ID-->
+            <DstUserID val="10001"/>
+            <State val="1"/>
+        </PrivateTalk>
+        <!--媒体共享状态-->
+        <MediaShare>
+            <AudioShare val="0xff"/>
+            <VideoShare val="0xff"/>
+        </MediaShare>
+        <!--音频输出静音状态-->
+        <AudioOutMute val="1"/>
+        <!--用户权限-->
+        <Right val="2" />
+        <!--是否允许文字聊天-->
+        <EnableChat val="0"/>
+        <!--分组会议状态，1表示正在进行分组会议 0表示在主会议-->
+        <GroupState val="1"/>
+        <!--用户信息-->
+        <Info>
+            <DisplayName val="guest2"/>
+            <Tel val="0755-83504419"/>
+            <Mobile val="13989898989"/>
+            <EMail val="test@test.com"/>
+            <Sex val="0"/>
+        </Info>
+        <!--白板标注权限 0 不能标注 2 允许标注-->
+        <WBMarkState val="2"/>
+        <!--用户网络连接状态 "0" 正常状态 , "1" 断开状态-->
+        <OnlineState val="0"/>
+    </cmd> 
+    
+    <!--服务器通知用户状态改变-->
+    <cmd id="6609">
+        <!--被改变状态的用户ID-->
+        <UserID val="1000"/>
+        <!--可以改变以下状态的一个或多个-->
+        <Audio>
+            <ID val="1"/>
+            <State val="1"/>
+        </Audio>
+        <Video>
+            <ID val="1"/>
+            <State val="0"/>
+        </Video>
+        <DataState val="0"/>
+        <VNCState val="0"/> 
+        <PrivateTalk>
+            <!--发起人ID-->
+            <OptUserID val="10000"/>
+            <!--对方ID-->
+            <DstUserID val="10001"/>
+            <State val="1"/>
+        </PrivateTalk>
+        <AudioShareID val="0xff"/>
+        <VideoShareID val="0xff"/>
+        <AudioOutMute val="1"/>
+        <Right val="2" />
+        <EnableChat val="0"/>
+        <!--分组会议状态，1表示正在进行分组会议 0表示在主会议-->
+        <GroupState val="1"/>
+        <!--用户信息-->
+        <Info>
+            <DisplayName val="guest2"/>
+            <Tel val="0755-83504419"/>
+            <Mobile val="13989898989"/>
+            <EMail val="test@test.com"/>
+            <Sex val="0"/>
+        </Info>
+        <!--白板标注权限 0 不能标注 2 允许标注-->
+        <WBMarkState val="2"/>
+    </cmd>
+    
+    <!--用户改变会议状态-->
+    <cmd id="6510">
+        <!--可以改变一个或多个状态-->
+        <!--会议模式-->
+        <Mode val="2"/>
+        <!--会议锁定-->
+        <Lock val="0"/>
+        <!--会议是否允许录制-->
+        <EnableRecord val="1"/>
+        <!--是否允许文字聊天-->
+        <EnableChat val="1"/>
+        <!--是否允许文字私聊-->
+        <EnableP2PChat val="1"/>
+        <!--是否允许对所有人聊天-->
+        <EnablePubChat val="1"/>
+        <!--是否允许发送文件-->
+        <EnableSendFile val="1" />
+        <!--是否允许保持电子白板-->
+        <EnableSaveWB val="1" />
+        <!--取消主讲权限时保持广播音视频-->
+        <EnableKeepVideo val="1" />
+    </cmd> 
+    
+    <!--服务器通知会议状态已改变-->
+    <cmd id="6610">
+        <Mode val="2"/>
+        <Lock val="0"/>
+        <EnableRecord val="1"/>
+        <EnableChat val="1"/>
+        <EnableP2PChat val="1"/>
+        <EnablePubChat val="1"/>
+        <EnableSendFile val="1" />
+        <EnableSaveWB val="1" />
+        <EnableKeepVideo val="1" />
+        
+    </cmd> 
+    
+    <!--用户申请/放弃成为会议主持人-->
+    <cmd id="6511">
+        <!--为1时申请成为主持，为0时放弃主持权限-->
+        <ChairRight val="1" />
+        <ChairPwd val="1111" />
+    </cmd>
+    
+    <!--服务器返回申请/放弃主持人结果,只有在申请失败时,才会返回.如果申请成功,会返回用户权限变更消息-->
+    <cmd id="6611">
+        <ChairRight val="1" />
+        <Result val="0" />
+    </cmd>
+    
+    <!--发送文字消息-->
+    <cmd id="6512">
+        <!--SrcUserID 为0时,表示为系统消息-->
+        <SrcUserID val="10000"/>
+        <!--DstUserID 为0时,表示转发给所有客户端-->
+        <DstUserID val="10001"/>
+        <Color val="0"/>
+        <Text val="hello"/>
+        <Font Name="宋体" Width="0" Height="0" Weight="0" Underline="0" StrikeOut="0" CharSet="0" Italic="0" />
+    </cmd> 
+    
+    <!--服务器转发文字消息-->
+    <cmd id="6612">
+        <!--SrcUserID 为0时,表示为系统消息-->
+        <SrcUserID val="10000"/>
+        <!--DstUserID 为0时,表示转发给所有客户端-->
+        <DstUserID val="10001"/>
+        <Color val="0"/>
+        <Text val="hello"/>
+        <Font Name="宋体" Width="0" Height="0" Weight="0" Underline="0" StrikeOut="0" CharSet="0" Italic="0" />
+    </cmd> 
+    
+    <!--用户发送当前视图状态,让其他用户跟随其状态-->
+    <cmd id="6513">
+        <!--窗口模式 1 普通模式 2 数据模式 3 视频模式-->
+        <Mode val="1"/>
+        <!--是否全屏模式-->
+        <Full val="0"/>
+        <!--数据当前视图 1 白板 2 屏幕广播 3 WEB共享-->
+        <DataActive val="1"/>
+        <!--视频布局ID-->
+        <VideoRelayID val="1"/>
+        <!--视频全屏显示的用户ID-->
+        <FullVideoID val="10000"/>
+        <!--视频全屏用户对应的视频ID-->
+        <FullVideoMediaID val="0"/>
+        <Video>
+            <UserID val="10001"/>
+            <MediaID val="0"/>
+            <Pos val="1"/>          
+        </Video>
+        <Video>
+            <UserID val="10002"/>
+            <MediaID val="0"/>
+            <Pos val="3"/>          
+        </Video>
+        <Video>
+            <UserID val="10003"/>
+            <MediaID val="0"/>
+            <Pos val="4"/>          
+        </Video>
+    </cmd> 
+    
+    <!--服务器转发视图状态-->
+    <cmd id="6613">
+        <!--窗口模式 1 普通模式 2 数据模式 3 视频模式-->
+        <Mode val="1"/>
+        <!--是否全屏模式-->
+        <Full val="0"/>
+        <!--数据当前视图 1 白板 2 屏幕广播 3 WEB共享-->
+        <DataActive val="1"/>
+        <!--视频布局ID-->
+        <VideoRelayID val="1"/>
+        <!--视频全屏显示的用户ID-->
+        <FullVideoID val="10000"/>
+        <!--视频全屏用户对应的视频ID-->
+        <FullVideoMediaID val="0"/>
+        <Video>
+            <UserID val="10001"/>
+            <MediaID val="0"/>
+            <Pos val="1"/>          
+        </Video>
+        <Video>
+            <UserID val="10002"/>
+            <MediaID val="0"/>
+            <Pos val="3"/>          
+        </Video>
+        <Video>
+            <UserID val="10003"/>
+            <MediaID val="0"/>
+            <Pos val="4"/>          
+        </Video>
+    </cmd>  
+    
+    <!--主持人发送快速静场命令-->
+    <cmd id="6514">
+    </cmd>
+    
+    <!--服务器转发快速静场命令-->
+    <cmd id="6614">
+    </cmd>
+       
+    <!--主持人设定会场字幕-->
+    <cmd id="6515">
+        <!--字幕的有效期,以分钟为单位,等于0时,表示一直有效-->
+        <Duration>0</Duration>
+        <!--字幕数据-->
+        <Data>
+        </Data>
+    </cmd>  
+   
+    <!--服务器转发字幕消息-->
+    <cmd id="6615">
+        <Data>
+        </Data>
+    </cmd>
+   
+    <!--用户发送文件给其他用户-->
+    <cmd id="6516">
+        <DstUser> 
+            <UserID val="10001"/>
+            <UserID val="10002"/>
+            <UserID val="10003"/>
+        </DstUser> 
+        <FileInfo>  
+            <Guid val="{EF63079D-44C5-4fb6-81C5-00350A14F8D5}"/>
+            <Name val="test.asf"/>
+            <Size val="600990"/>
+            <CheckCode val="8888"/>
+            <SrvAppID val="3"/>
+            <SrvAddrLink val="TCP:127.0.0.1:8000"/>
+        </FileInfo>
+    </cmd> 
+       
+    <!--服务器通知其他用户接收文件-->
+    <cmd id="6616"> 
+        <SrcUserID val="10000"/>
+        <FileInfo>  
+            <Guid val="{EF63079D-44C5-4fb6-81C5-00350A14F8D5}"/>
+            <Name val="test.asf"/>
+            <Size val="600990"/>
+            <CheckCode val="8888"/>
+            <SrvAppID val="3"/>
+            <SrvAddrLink val="TCP:127.0.0.1:8000"/>
+        </FileInfo>
+    </cmd> 
+    
+    <!--系统消息,用于发布或广播消息-->
+    <cmd id="6618">
+        <!--1 文字消息  2 窗口消息 3 WEB消息 4 更改会议主题-->
+        <Type val="1"/>
+        <Msg val="message"/>
+    </cmd>
+
+    <!--主持人设置会场数据，可以设置一个项目，也可以多个，用于上下课等会场状态的设置-->
+    <cmd id="6519">
+        <DataItem>
+            <!--项目编号，从0开始，个数不限-->
+            <ItemID val="0"/>
+            <RoomData>
+                <!--内部数据由客户端自定义-->
+            </RoomData>
+        </DataItem>
+        <DataItem>
+            <!--项目编号，从0开始，个数不限-->
+            <ItemID val="1"/>
+            <RoomData>
+                <!--内部数据由客户端自定义-->
+            </RoomData>
+        </DataItem>
+    </cmd>
+    <!--服务器通知所有用户更新会场数据，新登录用户也自动收到该通知-->
+    <cmd id="6619">
+        <DataItem>
+            <!--项目编号，从0开始，个数不限-->
+            <ItemID val="0"/>
+            <!--已持续时间，单位：秒-->
+            <Duration val="0"/>
+            <RoomData>
+                <!--内部数据由客户端自定义-->
+            </RoomData>
+        </DataItem>
+        <DataItem>
+            <!--项目编号，从0开始，个数不限-->
+            <ItemID val="1"/>
+            <!--已持续时间，单位：秒-->
+            <Duration val="0"/>
+            <RoomData>
+                <!--内部数据由客户端自定义-->
+            </RoomData>
+        </DataItem>
+    </cmd>
+    <!--主持人申请获取AV合成参数-->
+    <cmd id="6520">
+    </cmd>
+    <!--服务器返回当前AV合成参数-->
+    <cmd id="6620">
+        <Audio>
+            <FecType>1</FecType>
+            <EncoderID>6</EncoderID>
+        </Audio>
+        <Video>
+            <Width>320</Width>
+            <Height>240</Height>
+            <FrameRate>15</FrameRate>
+            <EncoderID>3</EncoderID>
+            <EncoderMode>0</EncoderMode>
+            <Bitrate>30000</Bitrate>
+            <VBRQuality>50</VBRQuality>
+            <KeyFrameInterval>30</KeyFrameInterval>
+        </Video>
+    </cmd>
+    <!--主持人设置AV合成参数-->
+    <cmd id="6521">
+        <!--是否启用默认参数，0为关闭，1为启用，当启用默认参数的时候，后面的配置不起作用，服务器将从新采用默认值合成-->
+        <EnableDefault>1</EnableDefault>
+        <Audio>
+            <FecType>1</FecType>
+            <EncoderID>6</EncoderID>
+        </Audio>
+        <Video>
+            <Width>320</Width>
+            <Height>240</Height>
+            <FrameRate>15</FrameRate>
+            <EncoderID>3</EncoderID>
+            <EncoderMode>0</EncoderMode>
+            <Bitrate>30000</Bitrate>
+            <VBRQuality>50</VBRQuality>
+            <KeyFrameInterval>30</KeyFrameInterval>
+        </Video>
+    </cmd>
+
+    <!--主持人设定视频字幕参数-->
+    <cmd id="6522">
+        <DateTime>
+            <!--字幕显示位置,1-左上 2-右上 3-左下 4-右下-->
+            <Pos val="0"/>
+            <Size val="2"/>
+            <Color val="0"/>
+        </DateTime>
+        <UserName>
+            <Pos val="0"/>
+            <Size val="2"/>
+            <Color val="0"/>
+        </UserName>
+    </cmd>  
+   
+    <!--服务器转发主持人设置视频字幕参数-->
+    <cmd id="6622">
+        <DateTime>
+            <!--字幕显示位置,1-左上 2-右上 3-左下 4-右下-->
+            <Pos val="0"/>
+            <Size val="2"/>
+            <Color val="0"/>
+        </DateTime>
+        <UserName>
+            <Pos val="0"/>
+            <Size val="2"/>
+            <Color val="0"/>
+        </UserName>
+    </cmd>
+    
+    <!--主持人创建分组会议,可以同时创建多个-->
+    <cmd id="6523">
+        <RoomInfo>
+            <!--会议主题-->
+            <Theme val="test"/>
+            <MaxUserCount val="100"/>
+            <EnableJoin val="1" />
+            <EnableLeave val="1" />
+            <User>
+                <ID val="1000"/>
+                <Right val="1"/>
+            </User>
+            <User>
+                <ID val="1001"/>
+                <Right val="2"/>
+            </User>
+        </RoomInfo>
+        <RoomInfo>
+        </RoomInfo>     
+    </cmd>
+    
+    <!--服务器返回新建分组会议信息-->
+    <cmd id="6623">
+        <RoomInfo>
+            <RoomID val="10000"/>
+            <Theme val="test"/>
+            <!--创建人-->
+            <Creator val="10000"/>
+            <!--持续时间:毫秒-->
+            <Duration val="120000"/>
+            <MaxUserCount val="100"/>
+            <EnableJoin val="1" />
+            <EnableLeave val="1" />
+        </RoomInfo>
+        <RoomInfo>
+        </RoomInfo>
+    </cmd>
+    
+    <!--请求将用户加入分组会议,可以是主持人或自己发起-->
+    <cmd id="6524">
+        <RoomID val="10000"/>
+        <User>
+            <ID val="1001"/>
+            <!--权限，为0时，由服务器生成-->
+            <Right val="0"/>
+        </User>
+        <User>
+            <ID val="1002"/>
+            <Right val="2"/>
+        </User>
+    </cmd>
+    
+    <!--通知用户进入分组会议-->
+    <cmd id="6624">
+        <SrcUserID val="10000"/>
+        <!--所在会议室的服务节点ID-->
+        <RoomSrvNodeID val="NodeID1$SID:10005$AID:11"/>
+        <!--所在会议室的服务级联验证码-->
+        <SrvAuthCode val="13123213"/>
+        <RoomID val="10000"/>
+        <Theme val="test"/>
+        <Creator val="10000"/>      
+        <Right val="1"/>
+        <Token val="abcd"/>
+        <!--视频会议应用服务地址-->
+        <SrvAddr var="TCP:127.0.0.1:8000" /> 
+    </cmd>
+  
+    <!--主持人结束分组会议-->
+    <cmd id="6525">
+        <RoomID val="10000"/>
+        <RoomID val="10001"/>   
+    </cmd>
+    
+    <!--服务器返回结束分组会议-->
+    <cmd id="6625">
+        <RoomID val="10000"/>
+        <RoomID val="10001"/>   
+    </cmd>
+    
+    <!--请求将用户加入主会议,由主持人发起-->
+    <cmd id="6526">
+        <UserID val="10000"/>
+        <UserID val="10001"/>
+    </cmd>
+    
+    <!--通知用户加入主会议-->
+    <cmd id="6626">
+        <SrcUserID val="10000"/>
+    </cmd>
+    
+    <!--通知用户修改用户名称主会议-->
+    <cmd id="6527">
+        <Name val="10000"/>
+    </cmd>
+    <!--返回用户修改用户名称主会议-->
+    <cmd id="6627">
+        <Name val="10000"/>
+    </cmd>
+    
+    <!--客户端请求服务器中转消息--> 
+    <!--服务器直接转发该消息，命令ID相同-->
+    <cmd id="6700">
+        <SrcUserID val="10000"/>
+        <!--DstUserID 为0时,表示转发给所有客户端-->
+        <DstUserID val="10001"/>
+        <!--将数据发送给批量用户-->
+        <DstUserList>
+            <UserID val="10001"/>
+            <UserID val="10002"/>
+        </DstUserList>
+        <!--msg id由客户端定义,服务器不做处理-->
+        
+        <!--用户授予其他用户远程控制权-->
+        <msg id="6701">
+            <EnableControl val="1"/>
+        </msg>
+        <!--远程遥控摄像头-->
+        <msg id="6702">
+            <!--1 左转 2 右转 3 向上 4 向下 5 放大 6 缩小--> 
+            <cmd val="1"/> 
+            <!--遥控的视频ID,对应于媒体ID-->
+            <ID val="1"/>
+        </msg>
+        <!--远程获取音视频参数-->
+        <msg id="6703">
+        </msg>
+        <!--返回本地音视频参数-->
+        <msg id="6704">
+        </msg>
+        <!--远程设置音视频参数-->
+        <msg id="6705">
+        </msg>
+        <!--接收文件者向文件发送者返馈文件接收状态-->
+        <msg id="6706">
+            <!--接收的文件GUID-->
+            <Guid val="{EF63079D-44C5-4fb6-81C5-00350A14F8D5}"/>
+            <!--接收文件状态 0-拒绝接收 1-正在接收 2-取消接收-->
+            <RecvState val="1"/>
+        </msg>
+        <!--开始快速点名-->
+        <msg id="6721">
+            <!--此次点名的编号-->
+            <GUID val="{DD7F23D1-84B6-4937-87CA-230DFB5B2101}"/>        
+            <!--点名持续时间(单位：秒)-->
+            <Duration val="30"/>
+        </msg>
+        <!--结束快速点名-->
+        <msg id="6722">
+            <!--此次点名的编号-->
+            <GUID val="{DD7F23D1-84B6-4937-87CA-230DFB5B2101}"/>        
+        </msg>
+        <!--快速点名返回应答-->
+        <msg id="6723">
+            <!--此次点名的编号-->
+            <GUID val="{DD7F23D1-84B6-4937-87CA-230DFB5B2101}"/>        
+        </msg>
+    </cmd>
+    
+    <!--############################终端与会议服务开始############################-->
+    
+    <!--呼叫请求，支持批量呼叫-->
+    <cmd id="6741">     
+        <ReqCallInfo>
+            <!--被叫号码-->
+            <CalleeNum val="13812345678" />
+            <!--被叫昵称-->
+            <CalleeNickName val="张三" />
+            <!--被叫电话用户的会议用户ID，非0有效-->
+            <CalleeUserID val="123" />
+        </ReqCallInfo>  
+        <ReqCallInfo>
+            <!--被叫号码-->
+            <CalleeNum val="13812345678" />
+            <!--被叫昵称-->
+            <CalleeNickName val="张三" />
+            <!--被叫电话用户的会议用户ID，非0有效-->
+            <CalleeUserID val="123" />
+        </ReqCallInfo> 
+    </cmd>
+    
+    <!--呼叫返回-->
+    <cmd id="6742">
+        <!--操作结果：
+        0x0000-成功
+        0x1001-未知错误
+        0x3001-企业剩余拨号路数不够
+        0x3002-网关剩余拨号路数不够
+        0x3003-重复呼叫
+        -->
+        <OprResult val="0" />
+        <!--剩余可用拨号路数-->
+        <RemainCallCount val="1" />
+        <!--呼叫电话列表-->
+        <ReqCallInfo>
+            <!--被叫号码-->
+            <CalleeNum val="13812345678" />
+            <!--分配的临时用户ID，返回成功时有效-->
+            <CalleeUserID val="2" />
+        </ReqCallInfo>
+        <ReqCallInfo>
+            <!--被叫号码-->
+            <CalleeNum val="13812345679" />
+            <!--分配的临时用户ID，返回成功时有效-->
+            <CalleeUserID val="2" />
+        </ReqCallInfo>
+    </cmd>
+    
+    <!--挂机请求，支持批量挂机-->
+    <cmd id="6743">
+        <ReqCallList>
+            <!--被叫号码-->
+            <CalleeNum val="13812345678" />
+            <!--被叫号码-->
+            <CalleeNum val="13812345678" />
+        </ReqCallList>  
+    </cmd>
+    
+    <!--挂机返回-->
+    <cmd id="6744">
+        <!--操作结果：0成功，1失败-->
+        <OprResult val="0" /> 
+        <!--被叫号码-->
+        <CalleeNum val="13812345678" />
+    </cmd>
+    
+    <!--呼叫状态通知-->
+    <cmd id="6745">
+        <!--被叫号码-->
+        <CalleeNum val="13812345678" />
+        <!--呼叫状态码-->
+        <CallState val="10003" />      
+    </cmd>
+    
+    <!--获取用户拨号列表-->
+    <cmd id="6746">
+        <CallerUserID val="123" />
+        <RoomID val="123" />
+    </cmd>
+    
+    <!--返回用户拨号列表-->
+    <cmd id="6747">
+        <!--操作结果：0成功，1失败-->
+        <OprResult val="0" />
+        <!--被叫信息-->
+        <CalleeInfo>
+            <!--被叫号码-->
+            <CalleeNum val="18676546754" />
+            <!--被叫用户ID-->
+            <CalleeUserID val="123" />
+            <!--被叫呼叫状态，1: 呼叫中，2：通话中，3：挂断中-->
+            <CallState val="1" />
+        </CalleeInfo>
+        <CalleeInfo>
+            <CalleeNum val="18765435654" />
+            <CalleeUserID val="123" />
+            <CallState val="2" />
+        </CalleeInfo>
+    </cmd>
+    
+    <!--############################终端与会议服务结束############################-->
+    
+</root>

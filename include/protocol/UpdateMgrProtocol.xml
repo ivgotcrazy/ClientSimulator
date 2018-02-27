@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!--客户端向服务器获取版本信息-->
+	<cmd id="10000" ver="0">
+		<ProductID val="FMS001" /> 
+		<!--客户端当前版本号-->
+		<Version val="03.00.00.01"/>
+	</cmd> 
+
+	<!--服务器返回版本信息及客户端升级地址-->
+	<cmd id="10010" ver="0" > 
+		<!--客户端最新版本，客户端版本不能高于此版本-->
+		<NewVersion val="03.00.00.01"/>
+		<!--服务器兼容的客户端最低版本，客户端版本不能低于此版本-->
+		<MinVersion val="03.00.00.01"/>
+		<!--升级地址列表-->
+		<DownloadURL>http://127.0.0.1:8080/fm/download/FM_Desktop.exe</DownloadURL>
+		<!--WebServices 服务器接口URL-->
+		<WebServicesURL>http://192.168.1.85/cumeetingApi/cuService</WebServicesURL>
+	
+		
+	</cmd> 
+</root>

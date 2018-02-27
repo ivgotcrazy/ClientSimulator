@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!--向服务器请求建立临时房间-->
+	<cmd id="1" ver="0">
+		<!--客户端用户名-->
+		<Sender val="d00" /> 
+		<!--房间密码-->
+		<RoomPwd val="1111"/>
+	</cmd> 
+
+	<!--服务器返回建立临时房间结果-->
+	<cmd id="11">
+		<!--服务端APPGUID-->
+		<Sender val="{05AFC099-6915-4a8f-ACEE-D1A12E4A8A1B}" /> 
+		<!--创建结果-->
+		<Result val="0"/>
+		<!--房间ID-->
+		<RoomID val="10000" />
+		<!--房间密码-->
+		<RoomPwd val="1111"/>
+		<!--房间登录地址-->
+		<RoomAddr val="TCP:192.168.1.38:1089" />
+		<!--客户端下载地址 -->
+		<ClientDownloadUrl val="http://192.168.1.38:8080/fm/FMDesktopV3.8.exe" />
+	</cmd> 
+	
+	<!--向服务器请求销毁临时房间-->
+	<cmd id="2" ver="0">
+		<!--客户端用户名-->
+		<Sender val="d00" /> 
+		<!--房间ID-->
+		<RoomID val="10000"/>
+	</cmd> 
+
+	<!--服务器返回销毁临时房间结果-->
+	<cmd id="12">
+		<!--服务端APPGUID-->
+		<Sender val="{05AFC099-6915-4a8f-ACEE-D1A12E4A8A1B}" /> 
+		<!--销毁结果-->
+		<Result val="0"/>
+		<!--房间ID-->
+		<RoomID val="10000" />
+	</cmd> 
+	
+	<!--邀请其它用户参与会议-->
+	<cmd id="3" ver="0">
+		<!--客户端用户名-->
+		<Sender val="d00" /> 
+		<!--房间ID-->
+		<RoomID val="10000" />
+		<!--房间密码-->
+		<RoomPwd val="1111"/>
+		<!--房间登录地址-->
+		<RoomAddr val="TCP:192.168.1.38:1089" />
+		<!--客户端下载地址 -->
+		<ClientDownloadUrl val="http://192.168.1.38:8080/fm/FMDesktopV3.8.exe" />
+	</cmd> 
+
+	<!--应答其它用户邀请-->
+	<cmd id="4">
+		<!--客户端用户名-->
+		<Sender val="t00" /> 
+		<!--应答结果-->
+		<Result val="0"/>
+		<!--房间ID-->
+		<RoomID val="10000" />
+	</cmd> 
+</root>
